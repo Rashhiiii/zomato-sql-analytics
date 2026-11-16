@@ -58,3 +58,10 @@ Joins (inner and left), aggregation and `GROUP BY` / `HAVING`, subqueries, `CASE
 1. Load the five tables into a MySQL database named `zomato_db`.
 2. Open `zomato_database.sql` in MySQL Workbench and run it section by section.
 3. Section 2.3 contains an `UPDATE` that fixes the currency values. It has already been applied once, so rerunning it changes 0 rows.
+
+## Screenshots
+
+![Cleaned currency values](Currency_cleaned.png)
+![Monthly sales trend](Monthly_sales.png)
+![Rating category comparison](Restaurant_ratings.png)
+![Top 10 restaurants by sales](TOP_10_Restaurants.png)
