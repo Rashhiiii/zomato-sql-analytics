@@ -13,7 +13,7 @@ Five tables:
 | `orders` | 150,281 order records: date, quantity, sales amount, currency, user ID, restaurant ID |
 | `restaurant` | 148,515 restaurants with ratings and rating counts |
 | `users` | Customer gender and age |
-| `food` | 372,561 food items with a veg / non-veg label |
+| `food` | 371,561 food items with a veg / non-veg label |
 | `menu` | Cuisine labels and menu prices |
 
 Rows in `orders` are treated as **order records**, not confirmed unique orders. INR and USD are always analysed separately.
@@ -39,6 +39,24 @@ Rows in `orders` are treated as **order records**, not confirmed unique orders. 
 | Food | 270,775 veg items (about 73%) and 100,784 non-veg (about 27%). |
 | Ratings vs sales | 61,430 restaurants have numeric ratings (average 3.89). Medium-rated restaurants had the highest total INR sales (210,873,332.00), followed by high-rated (196,945,118.00). Low-rated restaurants had the highest average per record (7,798.89), and high-rated the lowest (6,288.76). |
 | Unmatched IDs | 1,643 order records have no matching restaurant. 1,617 of them use restaurant ID 0, which looks like a placeholder. |
+
+## Power BI Dashboard
+
+A one-page dashboard built in Power BI on the same dataset. [PDF version](zomato_dashboard.pdf)
+
+![Dashboard](dashboard.png)
+
+**What it shows (INR only):**
+- KPI cards: 150K order records, 6.56K average per record, 987M total revenue (match the SQL results).
+- Monthly revenue trend with a year slicer. The first and last months are partial.
+- Top 10 cities by revenue, revenue by gender, and revenue by restaurant rating category.
+
+**Data issues found and fixed while loading:**
+- A hidden carriage return in the currency column (3 distinct values instead of 2).
+- Malformed food IDs, filtered so that food IDs are unique and match the SQL count (371,561).
+- UTF-8 encoding needed to show the rupee symbol correctly in the restaurant file.
+
+**Notes:** City and rating charts exclude order records with no matching restaurant (ID 0). The rating comparison shows association, not causation.
 
 ## Limitations
 
